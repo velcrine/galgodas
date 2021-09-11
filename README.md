@@ -17,8 +17,7 @@ programs and perform those tasks.
     But if the question statement is : 
     
     Out a group of students, I want only the smallest one,
-    then the smallest one left among all : quick sort will seem pretty
-    useless.
+    then the smallest one left among all : quick sort will seem pretty useless.
 
     As selection sort will give the shortest of all in "n" time complexity one by one.
     QuickSort will have to sort all the elements with NlogN, and then will give out just 1.
