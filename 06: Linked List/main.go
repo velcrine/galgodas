@@ -9,13 +9,13 @@ func main() {
 	node = node.AddFront(1)
 	node = node.AddFront(2)
 	node = node.AddFront(3)
-	node.AddLast(1)
-	node.AddLast(2)
-	node.AddLast(3)
+	node = node.AddLast(1)
+	node = node.AddLast(2)
+	node = node.AddLast(3)
 	node.Display()
 	node = node.DeleteFront()
 	node.Display()
-	node.DeleteLast()
+	node = node.DeleteLast()
 	node.Display()
 	fmt.Println(node.Len())
 }
@@ -23,7 +23,22 @@ func main() {
 type Node struct {
 	Val  int
 	Next *Node
+	Prev *Node
 }
+
+// [87]
+// [1] -> [2] -> [-4]
+
+// head = [1]
+
+// [87]<- head
+
+// [87] ->(head) [1] -> [2] -> [-4]
+
+// head = node[97]
+// (head) [87] -> [1] -> [2] -> [-4]
+// output
+// [87] -> [1] -> [2] -> [-4]
 
 func (head *Node) AddFront(element int) *Node {
 	ele := &Node{Val: element}
@@ -31,20 +46,26 @@ func (head *Node) AddFront(element int) *Node {
 		head = ele
 		return head
 	}
+
 	ele.Next = head
+	head.Prev = ele
 	return ele
 }
 
-func (head *Node) AddLast(element int) {
+func (head *Node) AddLast(element int) *Node {
 	ele := &Node{Val: element}
-	if head == nil {
-		head = ele
-		return
+	curr := head
+	if curr == nil {
+		curr = ele
+		return curr
 	}
-	for head.Next != nil {
-		head = head.Next
+	for curr.Next != nil {
+		curr = curr.Next
 	}
-	head.Next = ele
+	curr.Next = ele
+	ele.Prev = curr
+
+	return head
 }
 
 func (head *Node) DeleteFront() *Node {
@@ -55,21 +76,20 @@ func (head *Node) DeleteFront() *Node {
 	return head
 }
 
-func (head *Node) DeleteLast() (element int) {
-	if head == nil {
-		return -1
-	} else if head.Next == nil {
-		temp := head.Val
-		head = nil
-		return temp
+func (head *Node) DeleteLast() *Node {
+	curr := head
+	if curr == nil {
+		return nil
+	} else if curr.Next == nil {
+		return nil
 	}
 	var prev *Node
-	for head.Next != nil {
-		prev = head
-		head = head.Next
+	for curr.Next != nil {
+		prev = curr
+		curr = curr.Next
 	}
 	prev.Next = nil
-	return head.Val
+	return head
 }
 
 func (head *Node) Len() int {
@@ -87,8 +107,4 @@ func (head *Node) Display() {
 		head = head.Next
 	}
 	fmt.Println("")
-}
-
-func removeDuplicate() {
-
 }

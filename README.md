@@ -4,7 +4,7 @@ and data structures in golang, along with their variations,
 and decent lectures before taking each step
 
 ## inspiration
-this effort was made under a workshop instigated by professor @mohit-baliyan 
+this effort was made under a workshop instigated by mathematician @mohit-baliyan 
 to init the confidence among his CS students for the ability to render every 
 standard ds and frequently used algorithms in general life coding.
 
