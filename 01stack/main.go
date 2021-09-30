@@ -2,6 +2,9 @@ package main
 
 import "fmt"
 
+/*
+
+ */
 func main() {
 	stack := NewStack(3)
 
@@ -82,7 +85,7 @@ func (s *Stack) IsFull() bool {
 func (s *Stack) Push(e int) error {
 	// safety, push only when there is space to push
 	if s.IsFull() {
-		return fmt.Errorf("stack full")
+		return fmt.Errorf("stack overflow")
 	}
 	// increment top
 	s.Top++
