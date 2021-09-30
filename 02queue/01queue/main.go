@@ -2,6 +2,9 @@ package main
 
 import "fmt"
 
+/*
+
+ */
 func main() {
 	// create new queue
 	q := NewQueue(3)
