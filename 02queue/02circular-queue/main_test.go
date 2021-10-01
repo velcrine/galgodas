@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestLove(t *testing.T) {
+func TestCircularQueue(t *testing.T) {
 	q := NewQueue(3)
 
 	// no element there, dequeue will fail
