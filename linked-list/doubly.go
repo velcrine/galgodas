@@ -6,7 +6,7 @@ import (
 
 func main() {
 	var (
-		node *Node
+		node *DoubleNode
 		err  error
 	)
 	node = node.AddFirst(1)
@@ -28,20 +28,20 @@ func main() {
 
 // type for standard doubly linked list
 
-type Node struct {
+type DoubleNode struct {
 	// the data in the linked list node
 	Val int
 	// pointer to the next node
-	Next *Node
+	Next *DoubleNode
 	// pointer to the prev node
-	Prev *Node
+	Prev *DoubleNode
 }
 
 // return new head, after adding first
 
-func (head *Node) AddFirst(e int) *Node {
+func (head *DoubleNode) AddFirst(e int) *DoubleNode {
 	// create a new node
-	node := &Node{Val: e}
+	node := &DoubleNode{Val: e}
 	// current first now will become second
 	node.Next = head
 	if head != nil {
@@ -53,9 +53,9 @@ func (head *Node) AddFirst(e int) *Node {
 
 // return new head, after adding at last
 
-func (head *Node) AddLast(e int) *Node {
+func (head *DoubleNode) AddLast(e int) *DoubleNode {
 	// create a new node
-	node := &Node{Val: e}
+	node := &DoubleNode{Val: e}
 
 	if head == nil {
 		return node
@@ -75,7 +75,7 @@ func (head *Node) AddLast(e int) *Node {
 
 // return new head, after deleting first
 
-func (head *Node) DeleteFirst() (*Node, error) {
+func (head *DoubleNode) DeleteFirst() (*DoubleNode, error) {
 	if head == nil {
 		return nil, fmt.Errorf("empty list")
 	}
@@ -89,7 +89,7 @@ func (head *Node) DeleteFirst() (*Node, error) {
 
 // return new head, after deleting last
 
-func (head *Node) DeleteLast() (*Node, error) {
+func (head *DoubleNode) DeleteLast() (*DoubleNode, error) {
 
 	if head == nil {
 		return nil, fmt.Errorf("empty list")
@@ -109,7 +109,7 @@ func (head *Node) DeleteLast() (*Node, error) {
 
 // return last node of list
 
-func (head *Node) Last() *Node {
+func (head *DoubleNode) Last() *DoubleNode {
 	if head == nil {
 		return nil
 	}
@@ -120,7 +120,7 @@ func (head *Node) Last() *Node {
 	return head
 }
 
-func (head *Node) Display() {
+func (head *DoubleNode) Display() {
 	// iterate till head has a Val
 	for head != nil {
 		fmt.Print(head, " > ")
